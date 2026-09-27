@@ -1,4 +1,1 @@
-{% comment %}
-  找出一篇记录的封面图：优先用开头写的 image，否则自动取正文里第一张图片。
-  用法：{% include cover.html post=某篇记录 %}，之后可以用变量 cover。
-{% endcomment %}{% assign cover = include.post.image %}{% unless cover %}{% assign _parts = include.post.content | split: '<img' %}{% if _parts.size > 1 %}{% assign _src = _parts[1] | split: 'src="' %}{% assign cover = _src[1] | split: '"' | first %}{% endif %}{% endunless %}
+{% assign cover = include.post.image %}{% unless cover %}{% assign _parts = include.post.content | split: '<img' %}{% if _parts.size > 1 %}{% assign _src = _parts[1] | split: 'src="' %}{% assign cover = _src[1] | split: '"' | first %}{% endif %}{% endunless %}
