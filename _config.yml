@@ -1,0 +1,15 @@
+# ===== 网站基本信息（改成你自己的）=====
+title: Jarvis
+description: 一些不定期的记录、读过的书，和我的简历。
+author: Jarvis
+email: nino522717@gmail.com
+github: your-github-username   # 改成你的 GitHub 用户名
+
+# ===== 下面一般不用改 =====
+lang: zh-CN
+timezone: Asia/Shanghai
+markdown: kramdown
+permalink: /notes/:year/:month/:day/:title/
+exclude:
+  - 使用说明.md
+  - README.md

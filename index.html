@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<h1 class="hello">你好，我是 Jarvis。</h1>
+
+<div class="cards">
+
+  <!-- 卡片 1：不定期记录（自动显示最新一篇） -->
+  {% assign latest = site.posts.first %}
+  {% include cover.html post=latest %}
+  <a class="card" href="{{ '/notes/' | relative_url }}">
+    <div class="card-media">
+      {% if cover %}<img src="{{ cover | relative_url }}" alt="" loading="lazy">{% endif %}
+      <div class="card-date{% if cover %} on-img{% endif %}">
+        <span class="day">{{ latest.date | date: '%d' }}</span>
+        <span class="ym">{{ latest.date | date: '%Y.%m' }}</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-label">不定期记录<span> · {{ site.posts.size }} 篇</span></div>
+      <h2 class="card-title">{{ latest.title }}</h2>
+      <p class="card-excerpt">{{ latest.content | strip_html | normalize_whitespace | truncate: 120 }}</p>
+      <span class="card-more">全部记录 →</span>
+    </div>
+  </a>
+
+  <!-- 卡片 2：待定。想好之后，把 <div class="card is-empty"> 换成 <a class="card" href="链接">，结尾 </div> 换成 </a> -->
+  <div class="card is-empty">
+    <div class="card-media"><span class="num">02</span></div>
+    <div class="card-body">
+      <div class="card-label">待定</div>
+      <p class="card-excerpt">还没想好放什么。</p>
+    </div>
+  </div>
+
+  <!-- 卡片 3：待定 -->
+  <div class="card is-empty">
+    <div class="card-media"><span class="num">03</span></div>
+    <div class="card-body">
+      <div class="card-label">待定</div>
+      <p class="card-excerpt">还没想好放什么。</p>
+    </div>
+  </div>
+
+</div>

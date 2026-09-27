@@ -1,0 +1,28 @@
+---
+layout: default
+title: 不定期记录
+permalink: /notes/
+---
+<a class="back" href="{{ '/' | relative_url }}">← 首页</a>
+<h1 class="page-title">不定期记录</h1>
+<p class="muted">共 {{ site.posts.size }} 篇</p>
+
+{% assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+{% for year in years %}
+<h2 class="year">{{ year.name }}</h2>
+<ul class="note-list">
+  {% for post in year.items %}
+  {% include cover.html post=post %}
+  <li>
+    <a href="{{ post.url | relative_url }}">
+      <time>{{ post.date | date: "%m.%d" }}</time>
+      <div class="note-text">
+        <span class="note-title">{{ post.title }}</span>
+        <span class="note-excerpt">{{ post.content | strip_html | normalize_whitespace | truncate: 60 }}</span>
+      </div>
+      {% if cover %}<img class="note-thumb" src="{{ cover | relative_url }}" alt="" loading="lazy">{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endfor %}
